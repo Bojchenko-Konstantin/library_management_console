@@ -34,7 +34,7 @@ class Book:
         }
 
     @staticmethod
-    def make_object_from_dict(data: dict) -> "Book":
+    def create_object_from_dict(data: dict) -> "Book":
         """Create an instance of class 'Book' from dictionary"""
         return Book(
             data["id"],
