@@ -55,6 +55,23 @@ class Library:
                 indent=4,
             )
 
+    def find_books(self, keyword: str, search_by: str) -> List[Book]:
+        match search_by:
+            case "название":
+                return [
+                    book for book in self.books if keyword.lower() in book.title.lower()
+                ]
+            case "автор":
+                return [
+                    book
+                    for book in self.books
+                    if keyword.lower() in book.author.lower()
+                ]
+            case "год":
+                return [book for book in self.books if str(book.year) == keyword]
+            case _:
+                return []
+
     def add_book(self, title: str, author: str, year: int) -> None:
         """Add new book in library"""
         new_id = max([book.id for book in self.books], default=0) + 1
@@ -62,7 +79,7 @@ class Library:
         self.books.append(new_book)
         self.save_books()
 
-    def delete_book_by_ID(self, book_id: int) -> None:
+    def delete_book_by_id(self, book_id: int) -> None:
         """Delete book from library by ID"""
         book_to_delete = next((book for book in self.books if book.id == book_id), None)
         if book_to_delete:

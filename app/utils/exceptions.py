@@ -1,2 +1,6 @@
 class CantReadPrompt(Exception):
-    """Error: Please enter a valid integer"""
+    """Ошибка: Введите корректное целочисленное значение"""
+
+
+class CantReadYearPublication(Exception):
+    """Ошибка: Введите корректную дату публикации"""
