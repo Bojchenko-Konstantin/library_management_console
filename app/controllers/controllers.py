@@ -1,4 +1,4 @@
-from app.models.book import Status
+from app.models.enums import Status
 from models.library import Library
 from utils.validate_prompts_and_value import (
     validate_value_id,

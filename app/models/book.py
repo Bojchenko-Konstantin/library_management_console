@@ -1,11 +1,3 @@
-from enum import Enum
-
-
-class Status(Enum):
-    IN_STOCK = "в наличии"
-    GIVE_AWAY = "выдана"
-
-
 class Book:
     """Book model"""
 

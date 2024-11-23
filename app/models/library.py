@@ -3,7 +3,8 @@ import json
 
 from typing import List
 
-from .book import Book, Status
+from .book import Book
+from enums import Status
 
 
 class Library:
