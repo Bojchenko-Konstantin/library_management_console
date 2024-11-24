@@ -8,7 +8,7 @@ from utils.validate_prompts_and_value import (
 
 def delete_book_by_id(library: Library) -> None:
     book_id = validate_value_id("Введите ID книги для её удаления: ")
-    library.delete_book_by_id(book_id)
+    library.delete_book(book_id)
 
 
 def add_new_book(library: Library) -> None:
@@ -56,4 +56,4 @@ def update_status(library: Library):
         print(
             f"Статус '{new_status}' отсутствует. Список доступных статусов: {AVAILABLE_STATUSES}"
         )
-    library.update_status_by_ID(book_id, new_status)
+    library.update_status(book_id, new_status)

@@ -78,7 +78,7 @@ class Library:
         self.books.append(new_book)
         self.save_books()
 
-    def delete_book_by_id(self, book_id: int) -> None:
+    def delete_book(self, book_id: int) -> None:
         """Delete book from library by ID"""
         book_to_delete = next((book for book in self.books if book.id == book_id), None)
         if book_to_delete:
@@ -98,7 +98,7 @@ class Library:
         else:
             print("В библиотеке книги отсутствуют")
 
-    def update_status_by_ID(self, book_id: int, new_status: str) -> None:
+    def update_status(self, book_id: int, new_status: str) -> None:
         """Update status by ID"""
         book_to_update = next((book for book in self.books if book.id == book_id), None)
         if book_to_update:
