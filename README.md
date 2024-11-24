@@ -18,28 +18,28 @@
 
 1. **Клонируем репозиторий:**
 
-    ```bash
-    https://github.com/Bojchenko-Konstantin/library_management_console.git    
-    cd library_management_console
-    ```
+```bash
+https://github.com/Bojchenko-Konstantin/library_management_console.git    
+cd library_management_console
+```
 
 2. **Создаём виртуальное окружение:**
-    ```bash
-    poetry new имя_проекта
-    ```
+```bash
+poetry new имя_проекта
+```
     или
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
 ## Использование
 
 1. **Запускаем приложение:**
     Т.к. в основном файле имеется шебанг, мы можем запускать приложение по названию основного файла, однако для начала нам необходимо добавить этому файлу права на выполнение с помощью следующей команды:
-    ```bash
-    chmod +x library
-    ```
+```bash
+chmod +x library
+```
 Теперь остается только запустить приложение, находясь в соответствующей директории:
 
 ```bash
@@ -55,8 +55,8 @@ sudo ln -s $(pwd)/library /usr/local/bin/
 2. **Запускаем тесты**
 - Для тестирования используется unittest.
 
-    Команды для запуска тестов:
-    ```bash
-    python3 -m unittest tests/test_book.py
-    python3 -m unittest tests/test_library.py
-    ```
+Команды для запуска тестов:
+```bash
+python3 -m unittest tests/test_book.py
+python3 -m unittest tests/test_library.py
+```
