@@ -1,9 +1,9 @@
-from models.enums import MenuOptions
+from .constants import MENU_OPTIONS
 
 
 def show_menu_options() -> None:
-    """Show list commands library"""
+    """Отображает список команд библиотеки."""
     print("\nСписок команд библиотеки:")
-    for option in MenuOptions:
-        print(f"{option.value}")
+    for key, value in MENU_OPTIONS.items():
+        print(f"{key}. {value}")
     print("\n")

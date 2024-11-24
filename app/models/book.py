@@ -2,13 +2,8 @@ class Book:
     """Book model"""
 
     def __init__(
-        self,
-        id: int,
-        title: str,
-        author: str,
-        year: int,
-        status: Status = Status.IN_STOCK,
-    ) -> None:
+        self, id: int, title: str, author: str, year: int, status: str = "в наличии"
+    ):
         self.id = id
         self.title = title
         self.author = author
@@ -22,7 +17,7 @@ class Book:
             "title": self.title,
             "author": self.author,
             "year": self.year,
-            "status": self.status.value,
+            "status": self.status,
         }
 
     @staticmethod
@@ -33,5 +28,5 @@ class Book:
             data["title"],
             data["author"],
             data["year"],
-            Status(data["status"]),
+            data["status"],
         )

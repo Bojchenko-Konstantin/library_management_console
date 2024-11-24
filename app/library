@@ -1,0 +1,11 @@
+#!/usr/bin/env python3.12
+
+from utils.get_choice_from_menu import get_choice_from_menu
+
+
+def main() -> None:
+    get_choice_from_menu()
+
+
+if __name__ == "__main__":
+    main()

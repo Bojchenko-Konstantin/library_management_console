@@ -4,13 +4,13 @@ import json
 from typing import List
 
 from .book import Book
-from enums import Status
+from utils.constants import AVAILABLE_STATUSES
 
 
 class Library:
     """Library model"""
 
-    def __init__(self, data_file: str):
+    def __init__(self, data_file: str = None):
         self.data_file = data_file or os.path.join(
             os.path.dirname(__file__), "..", "library.json"
         )
@@ -57,21 +57,19 @@ class Library:
             )
 
     def find_books(self, keyword: str, search_by: str) -> List[Book]:
-        match search_by:
-            case "название":
-                return [
-                    book for book in self.books if keyword.lower() in book.title.lower()
-                ]
-            case "автор":
-                return [
-                    book
-                    for book in self.books
-                    if keyword.lower() in book.author.lower()
-                ]
-            case "год":
-                return [book for book in self.books if str(book.year) == keyword]
-            case _:
-                return []
+        """Ищет книги по заданному критерию."""
+        if search_by == "название":
+            return [
+                book for book in self.books if keyword.lower() in book.title.lower()
+            ]
+        elif search_by == "автор":
+            return [
+                book for book in self.books if keyword.lower() in book.author.lower()
+            ]
+        elif search_by == "год":
+            return [book for book in self.books if str(book.year) == keyword]
+        else:
+            return []
 
     def add_book(self, title: str, author: str, year: int) -> None:
         """Add new book in library"""
@@ -94,11 +92,8 @@ class Library:
         if self.books:
             for book in self.books:
                 print(
-                    f"ID: {book.id},\n"
-                    f"Название книги: {book.title},\n"
-                    f"Автор: {book.author},\n"
-                    f"Год: {book.year},\n"
-                    f"Статус: {book.status.value}"
+                    f"ID: {book.id} - Название: {book.title}, Автор: {book.author}, "
+                    f"Год: {book.year}, Статус: {book.status}"
                 )
         else:
             print("В библиотеке книги отсутствуют")
@@ -107,12 +102,13 @@ class Library:
         """Update status by ID"""
         book_to_update = next((book for book in self.books if book.id == book_id), None)
         if book_to_update:
-            if isinstance(new_status, Status):
-                book_to_update.status = new_status
-                self.save_books()
-            else:
-                print(
-                    f"Неправильный статус. Доступные статусы: {[status.value for status in Status]}."
-                )
+            if book_to_update:
+                if new_status in AVAILABLE_STATUSES:
+                    book_to_update.status = new_status
+                    self.save_books()
+                else:
+                    print(
+                        f"Неправильный статус. Доступные статусы: {AVAILABLE_STATUSES}."
+                    )
         else:
             print(f"Книга с ID {book_id} в библиотеке не найдена.")
