@@ -27,7 +27,8 @@ cd library_management_console
 ```bash
 poetry new имя_проекта
 ```
-    или
+или
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
